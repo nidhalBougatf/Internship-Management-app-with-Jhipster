@@ -1,0 +1,189 @@
+/*
+ * This is a microservice internship management sample with Gateway 
+ * and two microservice applications
+ * This uses JHipster registry for service discovery and JWT authentication
+ */
+ 
+application {
+  config {
+    baseName IntenrshipManagement,
+    applicationType gateway,
+    packageName com.jhipster.demo.lerif,
+    serviceDiscoveryType eureka,
+    authenticationType jwt,
+    prodDatabaseType mysql,
+    cacheProvider hazelcast,
+    buildTool maven,
+    clientFramework angular,
+    useSass true,
+    testFrameworks [protractor]
+  }
+  entities *
+}
+
+application {
+  config {
+    baseName projects,
+    applicationType microservice,
+    packageName com.jhipster.demo.projects,
+    serviceDiscoveryType eureka,
+    authenticationType jwt,
+    prodDatabaseType mysql,
+    cacheProvider hazelcast,
+    buildTool maven,
+    serverPort 8081,
+    skipUserManagement true
+  }
+  entities Project, Stack, Sprint, Task 
+}
+
+application {
+  config {
+    baseName employees,
+    applicationType microservice,
+    packageName com.jhipster.demo.employees,
+    serviceDiscoveryType eureka,
+    authenticationType jwt,
+    prodDatabaseType mysql,
+    buildTool maven,
+    serverPort 8082,
+    skipUserManagement true
+  }
+  entities Supervisor, Intern, Contract
+}
+
+
+
+entity Intern {
+	FullName String,
+    Email String required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/),
+    Phone String,
+    Summary String,
+    Picture ImageBlob,
+    Country String,
+    University String,
+	DegreeType String,
+    Level String   
+}
+
+entity Project {
+	Name String,
+    Description String,
+    GithubLink String,
+	JiraLink String
+
+}
+
+entity Stack {
+	Name String,
+    Version Float
+}
+
+
+entity Supervisor {
+	FullName String,
+    Email String required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/),
+    Phone String,
+	Speciality Specialization
+}
+
+
+enum Specialization {
+    Design, Big_Data, Development, Artificial_Intelligence, DevOps
+}
+
+entity Contract {
+	Duration Integer,
+    Startdate LocalDate, 
+    Type ContractType
+}
+
+enum ContractType {
+  Permanent, Temporary
+}
+
+entity Sprint {
+Name String,
+Desription String,
+Goal String,
+StartDate LocalDate,
+Duration Integer
+}
+
+entity Task {
+  Title String,
+  Description String,
+  Estimation Integer,
+  Status StatusType
+}
+
+enum StatusType {
+	ToDo, Doing, Done
+}
+
+
+
+relationship OneToOne {
+Intern{contract} to Contract
+}
+
+relationship OneToMany {
+    Project to Sprint{sprint},
+	Supervisor to Intern{intern}
+}
+
+
+
+
+// ManyToMany with extrafield
+// example :
+//entity Movie { title String}
+//entity Rater { name String}
+//entity Rating { value Integer} //the extra field
+
+//relationship ManyToMany {
+//  Rating{rater(name)} to Rater,
+//   Rating{movie(title)} to Movie
+//}
+
+
+
+relationship ManyToMany {
+Sprint{task(title)} to Task{sprint(name)},
+Project{stack(name)} to Stack {project(project)}
+
+}
+
+
+/* projects microservice */ 
+service Project, Stack,  Sprint, Task  with serviceClass
+paginate Project, Stack,  Sprint, Task  with pagination
+microservice Project, Stack,  Sprint, Task with projects
+
+
+/* Employees microservice */
+service Intern, Supervisor, Contract  with serviceClass
+paginate Intern, Supervisor, Contract with pagination
+microservice Intern, Supervisor, Contract with employees
+
+
+
+
+
+
+
+// this relationship means that A has multiple B
+// For example : A Driver can drive many cars, but a Car can also have many drivers.
+//relationship ManyToMany {
+//  Car{driver} to Driver{car}
+//}
+
+
+// this relationship means that A has only one B
+//Example : a location can only belong to one country
+//relationship OneToOne {
+// Supervisor
+//}
+
+// possible entities to add : Contract, Department , sprints, tasks
+

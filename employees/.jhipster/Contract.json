@@ -1,0 +1,34 @@
+{
+  "name": "Contract",
+  "fields": [
+    {
+      "fieldName": "duration",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "startdate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "ContractType",
+      "fieldValues": "Permanent,Temporary"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20200623073419",
+  "entityTableName": "contract",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": [
+    "IntenrshipManagement",
+    "employees"
+  ],
+  "microserviceName": "employees"
+}

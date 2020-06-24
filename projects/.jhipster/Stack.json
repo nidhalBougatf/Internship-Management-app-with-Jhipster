@@ -1,0 +1,38 @@
+{
+  "name": "Stack",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "version",
+      "fieldType": "Float"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "project",
+      "otherEntityRelationshipName": "stack",
+      "relationshipName": "project",
+      "otherEntityField": "project",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200623073219",
+  "entityTableName": "stack",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": [
+    "IntenrshipManagement",
+    "projects"
+  ],
+  "microserviceName": "projects"
+}

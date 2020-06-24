@@ -1,0 +1,52 @@
+{
+  "name": "Project",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "githubLink",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "jiraLink",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "sprint",
+      "otherEntityRelationshipName": "sprint",
+      "relationshipName": "sprint"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "stack",
+      "otherEntityRelationshipName": "project",
+      "relationshipName": "stack",
+      "otherEntityField": "name",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20200623073119",
+  "entityTableName": "project",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": [
+    "IntenrshipManagement",
+    "projects"
+  ],
+  "microserviceName": "projects"
+}

@@ -1,0 +1,40 @@
+{
+  "generator-jhipster": {
+    "authenticationType": "jwt",
+    "cacheProvider": "hazelcast",
+    "serverPort": "8081",
+    "serviceDiscoveryType": "eureka",
+    "skipUserManagement": true,
+    "baseName": "projects",
+    "buildTool": "maven",
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "enableHibernateCache": true,
+    "enableSwaggerCodegen": false,
+    "enableTranslation": true,
+    "jhiPrefix": "jhi",
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "messageBroker": false,
+    "nativeLanguage": "en",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "skipClient": true,
+    "testFrameworks": [],
+    "websocket": false,
+    "applicationType": "microservice",
+    "packageName": "com.jhipster.demo.projects",
+    "packageFolder": "com/jhipster/demo/projects",
+    "jhipsterVersion": "6.9.1",
+    "creationTimestamp": 1592897340389,
+    "clientPackageManager": "npm"
+  },
+  "entities": [
+    "Project",
+    "Stack",
+    "Sprint",
+    "Task"
+  ]
+}

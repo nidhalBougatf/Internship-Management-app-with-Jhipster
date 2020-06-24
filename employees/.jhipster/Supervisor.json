@@ -1,0 +1,50 @@
+{
+  "name": "Supervisor",
+  "fields": [
+    {
+      "fieldName": "fullName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required",
+        "pattern"
+      ],
+      "fieldValidateRulesPattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$"
+    },
+    {
+      "fieldName": "phone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "speciality",
+      "fieldType": "Specialization",
+      "fieldValues": "Design,Big_Data,Development,Artificial_Intelligence,DevOps"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "intern",
+      "otherEntityRelationshipName": "intern",
+      "relationshipName": "intern"
+    }
+  ],
+  "changelogDate": "20200623073319",
+  "entityTableName": "supervisor",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": [
+    "IntenrshipManagement",
+    "employees"
+  ],
+  "microserviceName": "employees"
+}

@@ -1,0 +1,57 @@
+{
+  "name": "Sprint",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "desription",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "goal",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "startDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "duration",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "task",
+      "otherEntityRelationshipName": "sprint",
+      "relationshipName": "task",
+      "otherEntityField": "title",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "project",
+      "otherEntityRelationshipName": "sprint",
+      "relationshipName": "sprint",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200623073519",
+  "entityTableName": "sprint",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": [
+    "IntenrshipManagement",
+    "projects"
+  ],
+  "microserviceName": "projects"
+}
